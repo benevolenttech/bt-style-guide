@@ -50,7 +50,7 @@
   "undef": true,
 
   // Tell jshint we're using ES6 syntax
-  "esnext",
+  "esnext": true,
 
   // Warn when variables are defined but never used.
   "unused": true,
