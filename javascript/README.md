@@ -821,7 +821,7 @@
     })(this);↵
     ```
 
-  - Use indentation when making long method chains.
+  ## Use indentation when making long method chains.
 
     ```javascript
     // bad
