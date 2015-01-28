@@ -1,54 +1,42 @@
-# Principles of writing consistent, idiomatic HTML
+# ISL \<html\> Style Guide
 
-The following document outlines a reasonable style guide for HTML development.
-These guidelines strongly encourage the use of existing, common, sensible
-patterns. They should be adapted as needed to create your own style guide.
-
-This is a living document and new ideas are always welcome. Please
-contribute.
+*Principles of writing consistent, idiomatic HTML*
 
 
 ## Table of contents
 
 1. [General principles](#general-principles)
-2. [Whitespace](#whitespace)
-3. [Format](#format)
-4. [Attribute order](#attribute-order)
-5. [Naming](#naming)
-6. [Practical example](#example)
+1. [Whitespace](#whitespace)
+1. [Format](#format)
+1. [Attribute order](#attribute-order)
+1. [Naming](#naming)
+1. [Django/Jinja/Swig/Twig Templates](#djangojinjaswigtwig-templates)
+1. [Practical example](#practical-example)
+1. [License](#license)
 
-[License](#license)
 
-
-<a name="general-principles"></a>
-## 1. General principles
+## General principles
 
 * All code in any code-base should look like a single person typed it, no
   matter how many people contributed.
-* Strictly enforce the agreed upon style.
 * If in doubt when deciding upon a style, use existing, common patterns.
 
+**[⬆ back to top](#table-of-contents)**
 
-<a name="whitespace"></a>
-## 2. Whitespace
 
-Only one style should exist across the entire source of your code-base. Always
-be consistent in your use of whitespace. Use whitespace to improve
-readability.
+## Whitespace
 
-* Never mix spaces and tabs for indentation.
-* Choose between soft indents (spaces) or real tabs. Stick to your choice
-  without fail. (Preference: spaces)
-* If using spaces, choose the number of characters used per indentation level.
-  (Preference: 4 spaces)
+* Use 4 spaces per indentation level.
+* Remove trailing whitespace.
 
 Tip: configure your editor to "show invisibles". This will allow you to
 eliminate end of line whitespace, eliminate unintended blank line whitespace,
 and avoid polluting commits.
 
+**[⬆ back to top](#table-of-contents)**
 
-<a name="format"></a>
-## 3. Format
+
+## Format
 
 * Always use lowercase tag and attribute names.
 * Write one discrete element per line.
@@ -75,6 +63,9 @@ Example:
 </div>
 ```
 
+**[⬆ back to top](#table-of-contents)**
+
+
 ### Exceptions and slight deviations
 
 Elements with multiple attributes can have attributes arranged across multiple
@@ -91,9 +82,10 @@ Example:
 </a>
 ```
 
+**[⬆ back to top](#table-of-contents)**
 
-<a name="attribute-order"></a>
-## 4. Attribute order
+
+## Attribute order
 
 HTML attributes should be listed in an order that reflects the fact that class
 names are the primary interface through which CSS and JavaScript select
@@ -106,58 +98,32 @@ elements.
 
 Example:
 
-````html
+```html
 <a class="[value]" id="[value]" data-name="[value]" href="[url]">[text]</a>
-````
-
-
-<a name="naming"></a>
-## 5. Naming
-
-Naming is hard, but very important. It's a crucial part of the process of
-developing a maintainable code base, and ensuring that you have a relatively
-scalable interface between your HTML and CSS/JS.
-
-* Use clear, thoughtful, and appropriate names for HTML classes. The names
-  should be informative both within HTML and CSS files.
-* Avoid _systematic_ use of abbreviated class names. Don't make things
-  difficult to understand.
-
-Example with bad names:
-
-```html
-<div class="cb s-scr"></div>
 ```
 
-```css
-.s-scr {
-  overflow: auto;
-}
+**[⬆ back to top](#table-of-contents)**
 
-.cb {
-  background: #000;
-}
+
+## Naming
+
+Naming is hard, but very important. It's a crucial part of the process of developing a maintainable code base, and ensuring that you have a relatively scalable interface between your HTML and CSS/JS.
+
+See <http://cssguidelin.es/#naming-conventions>.
+
+
+## Django/Jinja/Swig/Twig Templates
+
+Put one (and only one) space between the curly brackets and the tag contents.
+
+```
+{{ foo }}
 ```
 
-Example with better names:
-
-```html
-<div class="column-body is-scrollable"></div>
-```
-
-```css
-.is-scrollable {
-    overflow: auto;
-}
-
-.column-body {
-    background: #000;
-}
-```
+**[⬆ back to top](#table-of-contents)**
 
 
-<a name="example"></a>
-## 6. Practical example
+## Practical example
 
 An example of various conventions.
 
@@ -198,8 +164,9 @@ An example of various conventions.
 </html>
 ```
 
+**[⬆ back to top](#table-of-contents)**
 
-<a name="license"></a>
+
 ## License
 
 _Principles of writing consistent, idiomatic HTML_ by Nicolas Gallagher is
@@ -209,3 +176,6 @@ documents and translations in this repository.
 
 Based on a work at
 [github.com/necolas/idiomatic-html](https://github.com/necolas/idiomatic-html).
+
+**[⬆ back to top](#table-of-contents)**
+
