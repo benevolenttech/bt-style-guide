@@ -3,6 +3,7 @@
 
 *A mostly reasonable approach to JavaScript*
 
+
 ## Table of Contents
 
   1. [Types](#types)
@@ -30,12 +31,8 @@
   1. [Testing](#testing)
   1. [Performance](#performance)
   1. [Resources](#resources)
-  1. [In the Wild](#in-the-wild)
-  1. [Translation](#translation)
-  1. [The JavaScript Style Guide Guide](#the-javascript-style-guide-guide)
-  1. [Chat With Us About Javascript](#chat-with-us-about-javascript)
-  1. [Contributors](#contributors)
   1. [License](#license)
+
 
 ## Types
 
@@ -71,6 +68,7 @@
     ```
 
 **[⬆ back to top](#table-of-contents)**
+
 
 ## Objects
 
@@ -120,6 +118,7 @@
     ```
 
 **[⬆ back to top](#table-of-contents)**
+
 
 ## Arrays
 
@@ -316,7 +315,6 @@
 **[⬆ back to top](#table-of-contents)**
 
 
-
 ## Properties
 
   - Use dot notation when accessing properties.
@@ -368,7 +366,7 @@
     It's easier to add new variable declarations this way, and you never have
     to worry about swapping out a `;` for a `,` or introducing punctuation-only
     diffs.
-  - Align declarations for readability 
+  - Align declarations for readability
 
     ```javascript
     // bad
@@ -451,7 +449,7 @@
       return name;
     }
     ```
-  
+
   - Try to return as early as possible. This helps performance because the fastest code is the code that never gets executed.
     ```javascript
     // bad
@@ -567,7 +565,6 @@
   - For more information refer to [JavaScript Scoping & Hoisting](http://www.adequatelygood.com/2010/2/JavaScript-Scoping-and-Hoisting) by [Ben Cherry](http://www.adequatelygood.com/)
 
 **[⬆ back to top](#table-of-contents)**
-
 
 
 ## Conditional Expressions & Equality
@@ -853,6 +850,7 @@
     ```
 
 **[⬆ back to top](#table-of-contents)**
+
 
 ## Commas
 
@@ -1331,7 +1329,7 @@
     // fancyInput/fancyInput.js
 
     ;(function($) {
-      
+
       'use strict';
 
         // bawse
@@ -1441,7 +1439,6 @@
 
 ## Resources
 
-
 **Read This**
 
   - [Annotated ECMAScript 5.1](http://es5.github.com/)
@@ -1488,7 +1485,35 @@
   - [JSBooks](http://jsbooks.revolunet.com/) - Julien Bouquillon
   - [Third Party JavaScript](http://manning.com/vinegar/) - Ben Vinegar and Anton Kovalyov
 
+**[⬆ back to top](#table-of-contents)**
+
+
+## License
+
+(The MIT License)
+
+Copyright (c) 2014 Airbnb
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+'Software'), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 **[⬆ back to top](#table-of-contents)**
+
 
 # };
