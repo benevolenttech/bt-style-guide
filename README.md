@@ -10,7 +10,7 @@
 1. [Format](#format)
 1. [Attribute order](#attribute-order)
 1. [Naming](#naming)
-1. [Django/Jinja/Swig/Twig Templates](#djangojinjaswigtwig-templates)
+1. [Django Templates](#django-templates)
 1. [Practical example](#practical-example)
 1. [License](#license)
 
@@ -26,12 +26,12 @@
 
 ## Whitespace
 
-* Use 4 spaces per indentation level.
+* Use 4 spaces per indentation level, never tabs.
+* Use blank lines as needed to make code more readable.
 * Remove trailing whitespace.
 
-Tip: configure your editor to "show invisibles". This will allow you to
-eliminate end of line whitespace, eliminate unintended blank line whitespace,
-and avoid polluting commits.
+Tip: configure your editor to "show invisibles" to eliminate end of line
+whitespace and avoid polluting commits.
 
 **[⬆ back to top](#table-of-contents)**
 
@@ -112,56 +112,67 @@ Naming is hard, but very important. It's a crucial part of the process of develo
 See <http://cssguidelin.es/#naming-conventions>.
 
 
-## Django/Jinja/Swig/Twig Templates
+## Django Templates
+
+_Also applies to Jinja, Liquid, Swig, and Twig._
 
 Put one (and only one) space between the curly brackets and the tag contents.
 
-```
+```twig
 {{ foo }}
 ```
+
+There should be no spaces between variables, pipes, and filters.
+
+```twig
+{{ foo|length }}
+```
+
+Control statements should be aligned with the HTML elements than they contain. Removing the statement should result in HTML that is still aligned appropriately.
+
+```twig
+<ul>
+    <li>John Doe<li>
+
+    {% for user in users %}
+    <li>{{ user.username }}</li>
+    {% endfor %}
+</ul>
+```
+
+The one exception being that content inside a __block__ should be indented one level.
 
 **[⬆ back to top](#table-of-contents)**
 
 
 ## Practical example
 
-An example of various conventions.
+An example of various conventions:
 
-```html
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Document</title>
-        <link rel="stylesheet" href="main.css">
-        <script src="main.js"></script>
-    </head>
-    <body>
-        <article class="post" id="1234">
-            <time class="timestamp">March 15, 2012</time>
-            <a data-id="1234"
-             data-analytics-category="[value]"
-             data-analytics-action="[value]"
-             href="[url]">[text]</a>
-            <ul>
-                <li>
-                    <a href="[url]">[text]</a>
-                    <img src="[url]" alt="[text]">
-                </li>
-                <li>
-                    <a href="[url]">[text]</a>
-                </li>
-            </ul>
+```twig
+{# templates/index.html #}
+{% extends 'layouts/default.html' %}
 
-            <a class="link-complex" href="[url]">
-                <span class="link-complex__target">[text]</span>
-                [text]
-            </a>
+{% block content %}
 
-            <input value="text" readonly>
-        </article>
-    </body>
-</html>
+    {% for post in posts if post.published %}
+
+    <article class="post" id="post-{{ post.id }}">
+        <time class="post__time timestamp">{{ post.pub_date }}</time>
+
+        <a class="post__title"
+         data-ga-category="{{ post.ga_category }}"
+         data-id="{{ post.id }}"
+         href="{{ post.url }}">{{ post.title }}</a>
+
+        <div class="post__content">
+            {{ post.excerpt }}
+        </div>
+    </article>
+
+    {% endfor %}
+
+{% endblock %}
 ```
 
 **[⬆ back to top](#table-of-contents)**
