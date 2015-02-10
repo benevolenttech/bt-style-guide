@@ -1,6 +1,6 @@
 # ISL \<html\> Style Guide
 
-*Principles of writing consistent, idiomatic HTML*
+Inspired by Nicolas Gallagher's [Idiomatic HTML](https://github.com/necolas/idiomatic-html).
 
 
 ## Table of contents
@@ -107,7 +107,9 @@ Example:
 
 ## Naming
 
-Naming is hard, but very important. It's a crucial part of the process of developing a maintainable code base, and ensuring that you have a relatively scalable interface between your HTML and CSS/JS.
+Naming is hard, but very important. It's a crucial part of the process of
+developing a maintainable code base, and ensuring that you have a relatively
+scalable interface between your HTML and CSS/JS.
 
 See <http://cssguidelin.es/#naming-conventions>.
 
@@ -128,7 +130,8 @@ There should be no spaces between variables, pipes, and filters.
 {{ foo|length }}
 ```
 
-Control statements should be aligned with the HTML elements than they contain. Removing the statement should result in HTML that is still aligned appropriately.
+Control statements should be aligned with the HTML elements than they contain.
+Removing the statement should result in HTML that is still aligned appropriately.
 
 ```twig
 <ul>
@@ -180,13 +183,12 @@ An example of various conventions:
 
 ## License
 
-_Principles of writing consistent, idiomatic HTML_ by Nicolas Gallagher is
-licensed under the [Creative Commons Attribution 3.0 Unported
-License](http://creativecommons.org/licenses/by/3.0/). This applies to all
-documents and translations in this repository.
+_ISL \<html\> Style Guide_ is licensed under the [Creative Commons Attribution
+3.0 Unported License](http://creativecommons.org/licenses/by/3.0/). This applies
+to all documents and translations in this repository.
 
-Based on a work at
-[github.com/necolas/idiomatic-html](https://github.com/necolas/idiomatic-html).
+Based on a work at <http://github.com/necolas/idiomatic-html>.
+
 
 **[⬆ back to top](#table-of-contents)**
 
