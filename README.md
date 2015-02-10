@@ -1,8 +1,7 @@
 
 # ISL JavaScript Style Guide() {
 
-*A mostly reasonable approach to JavaScript*
-
+*Inspired by the fine folks at [Airbnb](http://nerds.airbnb.com/our-javascript-style-guide/).*
 
 ## Table of Contents
 
@@ -1492,7 +1491,8 @@
 
 (The MIT License)
 
-Copyright (c) 2014 Airbnb
+Original Work Copyright (c) Airbnb<br>
+Modifications Copyright (c) iStrategyLabs
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -1512,6 +1512,8 @@ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
 CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+Based on a work at <https://github.com/airbnb/javascript>.
 
 **[⬆ back to top](#table-of-contents)**
 
