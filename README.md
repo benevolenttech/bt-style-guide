@@ -1492,7 +1492,7 @@
 (The MIT License)
 
 Original Work Copyright (c) Airbnb<br>
-Modifications Copyright (c) iStrategyLabs
+Modifications Copyright (c) ISL
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
