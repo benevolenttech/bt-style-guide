@@ -1445,7 +1445,7 @@
 **Tools**
 
   - Code Style Linters
-    + [JSHint](http://www.jshint.com/) - [ISL .jshintrc](../javascript/linters/jshintrc)
+    + [JSHint](http://www.jshint.com/) - [ISL .jshintrc](.jshintrc)
     + [JSCS](https://github.com/jscs-dev/node-jscs)
 
 **Other Styleguides**
