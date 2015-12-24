@@ -21,8 +21,6 @@ Inspired by Nicolas Gallagher's [Idiomatic HTML](https://github.com/necolas/idio
   matter how many people contributed.
 * If in doubt when deciding upon a style, use existing, common patterns.
 
-**[⬆ back to top](#table-of-contents)**
-
 
 ## Whitespace
 
@@ -32,8 +30,6 @@ Inspired by Nicolas Gallagher's [Idiomatic HTML](https://github.com/necolas/idio
 
 Tip: configure your editor to "show invisibles" to eliminate end of line
 whitespace and avoid polluting commits.
-
-**[⬆ back to top](#table-of-contents)**
 
 
 ## Format
@@ -63,8 +59,6 @@ Example:
 </div>
 ```
 
-**[⬆ back to top](#table-of-contents)**
-
 
 ### Exceptions and slight deviations
 
@@ -81,8 +75,6 @@ Example:
     <span>[text]</span>
 </a>
 ```
-
-**[⬆ back to top](#table-of-contents)**
 
 
 ## Attribute order
@@ -101,8 +93,6 @@ Example:
 ```html
 <a class="[value]" id="[value]" data-name="[value]" href="[url]">[text]</a>
 ```
-
-**[⬆ back to top](#table-of-contents)**
 
 
 ## Naming
@@ -145,8 +135,6 @@ Removing the statement should result in HTML that is still aligned appropriately
 
 The one exception being that content inside a __block__ should be indented one level.
 
-**[⬆ back to top](#table-of-contents)**
-
 
 ## Practical example
 
@@ -178,8 +166,6 @@ An example of various conventions:
 {% endblock %}
 ```
 
-**[⬆ back to top](#table-of-contents)**
-
 
 ## License
 
@@ -188,7 +174,3 @@ _ISL \<html\> Style Guide_ is licensed under the [Creative Commons Attribution
 to all documents and translations in this repository.
 
 Based on a work at <http://github.com/necolas/idiomatic-html>.
-
-
-**[⬆ back to top](#table-of-contents)**
-
