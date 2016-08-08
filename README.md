@@ -26,15 +26,16 @@ function getKey(k) {
 const obj = {
   id: 5,
   name: 'San Francisco',
-};
-obj[getKey('enabled')] = true;
+}
+
+obj[getKey('enabled')] = true
 
 // good
 const obj = {
   id: 5,
   name: 'San Francisco',
   [getKey('enabled')]: true,
-};
+}
 ```
 
 Use object method shorthand. eslint: [`object-shorthand`](http://eslint.org/docs/rules/object-shorthand.html) jscs: [`requireEnhancedObjectLiterals`](http://jscs.info/rule/requireEnhancedObjectLiterals)
@@ -47,16 +48,16 @@ const atom = {
   addValue: function (value) {
     return atom.value + value
   },
-};
+}
 
 // good
 const atom = {
   value: 1,
 
   addValue(value) {
-    return atom.value + value;
+    return atom.value + value
   },
-};
+}
 ```
 
 Use property value shorthand. eslint: [`object-shorthand`](http://eslint.org/docs/rules/object-shorthand.html) jscs: [`requireEnhancedObjectLiterals`](http://jscs.info/rule/requireEnhancedObjectLiterals)
@@ -69,7 +70,7 @@ const lukeSkywalker = 'Luke Skywalker'
 // bad
 const obj = {
   lukeSkywalker: lukeSkywalker,
-};
+}
 
 // good
 const obj = {
@@ -138,7 +139,7 @@ console.log(object.hasOwnProperty(key))
 console.log(Object.prototype.hasOwnProperty.call(object, key))
 
 // best
-const has = Object.prototype.hasOwnProperty; // cache the lookup once, in module scope.
+const has = Object.prototype.hasOwnProperty // cache the lookup once, in module scope.
 /* or */
 const has = require('has')
 …
