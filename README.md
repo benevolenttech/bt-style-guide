@@ -145,3 +145,153 @@ const has = require('has')
 …
 console.log(has.call(object, key))
 ```
+
+## Arrays
+
+Use the literal syntax for array creation. eslint: [`no-array-constructor`](http://eslint.org/docs/rules/no-array-constructor.html)
+
+```javascript
+// bad
+const items = new Array()
+
+// good
+const items = []
+```
+
+Use [Array#push](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/push) instead of direct assignment to add items to an array.
+
+```javascript
+const someStack = []
+
+// bad
+someStack[someStack.length] = 'abracadabra'
+
+// good
+someStack.push('abracadabra')
+```
+
+Use array spreads `...` to copy arrays.
+
+```javascript
+// bad
+const len = items.length
+const itemsCopy = []
+let i
+
+for (i = 0 i < len i++) {
+  itemsCopy[i] = items[i]
+}
+
+// good
+const itemsCopy = [...items]
+```
+
+Use return statements in array method callbacks. It's ok to omit the return if the function body consists of a single statement following [8.2](#8.2). eslint: [`array-callback-return`](http://eslint.org/docs/rules/array-callback-return)
+
+```javascript
+// good
+[1, 2, 3].map((x) => {
+  const y = x + 1
+  return x * y
+})
+
+// good
+[1, 2, 3].map(x => x + 1)
+
+// bad
+const flat = {}
+[[0, 1], [2, 3], [4, 5]].reduce((memo, item, index) => {
+  const flatten = memo.concat(item)
+  flat[index] = flatten
+})
+
+// good
+const flat = {}
+[[0, 1], [2, 3], [4, 5]].reduce((memo, item, index) => {
+  const flatten = memo.concat(item)
+  flat[index] = flatten
+  return flatten
+})
+
+// bad
+inbox.filter((msg) => {
+  const { subject, author } = msg
+  if (subject === 'Mockingbird') {
+    return author === 'Harper Lee'
+  } else {
+    return false
+  }
+})
+
+// good
+inbox.filter((msg) => {
+  const { subject, author } = msg
+  if (subject === 'Mockingbird') {
+    return author === 'Harper Lee'
+  }
+
+  return false
+})
+```
+
+Use object destructuring when accessing and using multiple properties of an object. jscs: [`requireObjectDestructuring`](http://jscs.info/rule/requireObjectDestructuring)
+
+> Why? Destructuring saves you from creating temporary references for those properties.
+
+```javascript
+// bad
+function getFullName(user) {
+  const firstName = user.firstName
+  const lastName = user.lastName
+
+  return `${firstName} ${lastName}`
+}
+
+// good
+function getFullName(user) {
+  const { firstName, lastName } = user
+  return `${firstName} ${lastName}`
+}
+
+// best
+function getFullName({ firstName, lastName }) {
+  return `${firstName} ${lastName}`
+}
+```
+
+Use array destructuring. jscs: [`requireArrayDestructuring`](http://jscs.info/rule/requireArrayDestructuring)
+
+```javascript
+const arr = [1, 2, 3, 4]
+
+// bad
+const first = arr[0]
+const second = arr[1]
+
+// good
+const [first, second] = arr
+```
+
+Use object destructuring for multiple return values, not array destructuring. jscs: [`disallowArrayDestructuringReturn`](http://jscs.info/rule/disallowArrayDestructuringReturn)
+
+> Why? You can add new properties over time or change the order of things without breaking call sites.
+
+```javascript
+// bad
+function processInput(input) {
+  // then a miracle occurs
+  return [left, right, top, bottom]
+}
+
+// the caller needs to think about the order of return data
+const [left, __, top] = processInput(input)
+
+// good
+function processInput(input) {
+  // then a miracle occurs
+  return { left, right, top, bottom }
+}
+
+// the caller selects only the data they need
+const { left, top } = processInput(input)
+```
