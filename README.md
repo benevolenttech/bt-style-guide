@@ -295,3 +295,59 @@ function processInput(input) {
 // the caller selects only the data they need
 const { left, top } = processInput(input)
 ```
+
+## Strings
+
+Use single quotes `''` for strings. eslint: [`quotes`](http://eslint.org/docs/rules/quotes.html) jscs: [`validateQuoteMarks`](http://jscs.info/rule/validateQuoteMarks)
+
+```javascript
+// bad
+const name = "Capt. Janeway"
+
+// bad - template literals should contain interpolation or newlines
+const name = `Capt. Janeway`
+
+// good
+const name = 'Capt. Janeway'
+```
+
+When programmatically building up strings, use template strings instead of concatenation. eslint: [`prefer-template`](http://eslint.org/docs/rules/prefer-template.html) [`template-curly-spacing`](http://eslint.org/docs/rules/template-curly-spacing) jscs: [`requireTemplateStrings`](http://jscs.info/rule/requireTemplateStrings)
+
+> Why? Template strings give you a readable, concise syntax with proper newlines and string interpolation features.
+
+```javascript
+// bad
+function sayHi(name) {
+  return 'How are you, ' + name + '?'
+}
+
+// bad
+function sayHi(name) {
+  return ['How are you, ', name, '?'].join()
+}
+
+// bad
+function sayHi(name) {
+  return `How are you, ${ name }?`
+}
+
+// good
+function sayHi(name) {
+  return `How are you, ${name}?`
+}
+```
+
+Never use `eval()` on a string, it opens too many vulnerabilities.
+
+Do not unnecessarily escape characters in strings. eslint: [`no-useless-escape`](http://eslint.org/docs/rules/no-useless-escape)
+
+> Why? Backslashes harm readability, thus they should only be present when necessary.
+
+```javascript
+// bad
+const foo = '\'this\' \i\s \"quoted\"'
+
+// good
+const foo = '\'this\' is "quoted"'
+const foo = `'this' is "quoted"`
+```
