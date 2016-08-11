@@ -6,6 +6,7 @@
 4. [Strings](#strings)
 5. [Functions](#functions)
 6. [Arrow Functions](#arrow-functions)
+7. [Classes](#classes)
 
 
 <a name="semicolons"></a>
@@ -705,3 +706,9 @@ const itemHeight = (item) => {
 ```
 
 **[⬆ back to top](#table-of-contents)**
+
+## Classes
+In short, we don't typically utilize classes. We have embraced more of a [composition model](https://medium.com/javascript-scene/the-open-minded-explorer-s-guide-to-object-composition-88fe68961bed#.lla2ezbz2) of development. However, there are situations (particularly when using third-party code) when Classes my be required (or at least desirable). You should read [How to Use Classes and Sleep at Night](https://medium.com/@dan_abramov/how-to-use-classes-and-sleep-at-night-9af8de78ccb4#.dk2xxm2ys)
+
+**[⬆ back to top](#table-of-contents)**
+
