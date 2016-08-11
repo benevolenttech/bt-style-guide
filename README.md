@@ -1,11 +1,26 @@
 <a name="table-of-contents"></a>
 
-1. [Objects](#objects)
-2. [Arrays](#arrays)
-3. [Strings](#strings)
-4. [Functions](#functions)
-5. [Arrow Functions](#arrow-functions)
+1. [Semicolons](#semicolons)
+2. [Objects](#objects)
+3. [Arrays](#arrays)
+4. [Strings](#strings)
+5. [Functions](#functions)
+6. [Arrow Functions](#arrow-functions)
 
+
+<a name="semicolons"></a>
+## Semicolons
+We don't use them
+
+> Why? They're not required. Dropping them creates more consistency with our other major stack - python/django
+
+```javascript
+// bad
+const foo = 'bar';
+
+// good 
+const foo = 'bar'
+```
 
 <a name="objects"></a>
 ## Objects
