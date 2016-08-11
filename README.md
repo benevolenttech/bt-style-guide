@@ -1,6 +1,13 @@
+<a name="table-of-contents"></a>
+
 1. [Objects](#objects)
+2. [Arrays](#arrays)
+3. [Strings](#strings)
+4. [Functions](#functions)
+5. [Arrow Functions](#arrow-functions)
 
 
+<a name="objects"></a>
 ## Objects
 Use the literal syntax for object creation. eslint: [`no-new-object`](http://eslint.org/docs/rules/no-new-object.html)
 
@@ -145,7 +152,9 @@ const has = require('has')
 …
 console.log(has.call(object, key))
 ```
+**[⬆ back to top](#table-of-contents)**
 
+<a name="arrays"></a>
 ## Arrays
 
 Use the literal syntax for array creation. eslint: [`no-array-constructor`](http://eslint.org/docs/rules/no-array-constructor.html)
@@ -295,7 +304,9 @@ function processInput(input) {
 // the caller selects only the data they need
 const { left, top } = processInput(input)
 ```
+**[⬆ back to top](#table-of-contents)**
 
+<a name="strings"></a>
 ## Strings
 
 Use single quotes `''` for strings. eslint: [`quotes`](http://eslint.org/docs/rules/quotes.html) jscs: [`validateQuoteMarks`](http://jscs.info/rule/validateQuoteMarks)
@@ -351,3 +362,331 @@ const foo = '\'this\' \i\s \"quoted\"'
 const foo = '\'this\' is "quoted"'
 const foo = `'this' is "quoted"`
 ```
+**[⬆ back to top](#table-of-contents)**
+
+<a name="functions"></a>
+## Functions
+
+Wrap immediately invoked function expressions in parentheses. eslint: [`wrap-iife`](http://eslint.org/docs/rules/wrap-iife.html) jscs: [`requireParenthesesAroundIIFE`](http://jscs.info/rule/requireParenthesesAroundIIFE)
+
+> Why? An immediately invoked function expression is a single unit - wrapping both it, and its invocation parens, in parens, cleanly expresses this. Note that in a world with modules everywhere, you almost never need an IIFE.
+
+```javascript
+// immediately-invoked function expression (IIFE)
+(function () {
+  console.log('Welcome to the Internet. Please follow me.')
+}())
+```
+
+Never declare a function in a non-function block (if, while, etc). Assign the function to a variable instead. Browsers will allow you to do it, but they all interpret it differently, which is bad news bears. eslint: [`no-loop-func`](http://eslint.org/docs/rules/no-loop-func.html)
+
+**Note:** ECMA-262 defines a `block` as a list of statements. A function declaration is not a statement. [Read ECMA-262's note on this issue](http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf#page=97).
+
+```javascript
+// bad
+if (currentUser) {
+  function test() {
+    console.log('Nope.')
+  }
+}
+
+// good
+let test
+if (currentUser) {
+  test = () => {
+    console.log('Yup.')
+  }
+}
+```
+
+Never name a parameter `arguments`. This will take precedence over the `arguments` object that is given to every function scope.
+
+```javascript
+// bad
+function nope(name, options, arguments) {
+  // ...stuff...
+}
+
+// good
+function yup(name, options, args) {
+  // ...stuff...
+}
+```
+
+Never use `arguments`, opt to use rest syntax `...` instead. eslint: [`prefer-rest-params`](http://eslint.org/docs/rules/prefer-rest-params)
+
+> Why? `...` is explicit about which arguments you want pulled. Plus, rest arguments are a real Array, and not merely Array-like like `arguments`.
+
+```javascript
+// bad
+function concatenateAll() {
+  const args = Array.prototype.slice.call(arguments)
+  return args.join('')
+}
+
+// good
+function concatenateAll(...args) {
+  return args.join('')
+}
+```
+
+Use default parameter syntax rather than mutating function arguments.
+
+```javascript
+// really bad
+function handleThings(opts) {
+  // No! We shouldn't mutate function arguments.
+  // Double bad: if opts is falsy it'll be set to an object which may
+  // be what you want but it can introduce subtle bugs.
+  opts = opts || {}
+  // ...
+}
+
+// still bad
+function handleThings(opts) {
+  if (opts === void 0) {
+    opts = {}
+  }
+  // ...
+}
+
+// good
+function handleThings(opts = {}) {
+  // ...
+}
+```
+
+Avoid side effects with default parameters.
+
+> Why? They are confusing to reason about.
+
+```javascript
+const b = 1
+// bad
+function count(a = b++) {
+  console.log(a)
+}
+count()  // 1
+count()  // 2
+count(3) // 3
+count()  // 3
+```
+
+Always put default parameters last.
+
+```javascript
+// bad
+function handleThings(opts = {}, name) {
+  // ...
+}
+
+// good
+function handleThings(name, opts = {}) {
+  // ...
+}
+```
+
+Never use the Function constructor to create a new function. eslint: [`no-new-func`](http://eslint.org/docs/rules/no-new-func)
+
+> Why? Creating a function in this way evaluates a string similarly to eval(), which opens vulnerabilities.
+
+```javascript
+// bad
+const add = new Function('a', 'b', 'return a + b')
+
+// still bad
+const subtract = Function('a', 'b', 'return a - b')
+```
+
+Spacing in a function signature. eslint: [`space-before-function-paren`](http://eslint.org/docs/rules/space-before-function-paren) [`space-before-blocks`](http://eslint.org/docs/rules/space-before-blocks)
+
+> Why? Consistency is good, and you shouldn’t have to add or remove a space when adding or removing a name.
+
+```javascript
+// bad
+const f = function(){}
+const g = function (){}
+const h = function() {}
+
+// good
+const x = function () {}
+const y = function a() {}
+```
+
+Never mutate parameters. eslint: [`no-param-reassign`](http://eslint.org/docs/rules/no-param-reassign.html)
+
+> Why? Manipulating objects passed in as parameters can cause unwanted variable side effects in the original caller.
+
+```javascript
+// bad
+function f1(obj) {
+  obj.key = 1
+}
+
+// good
+function f2(obj) {
+  const key = Object.prototype.hasOwnProperty.call(obj, 'key') ? obj.key : 1
+}
+```
+
+Never reassign parameters. eslint: [`no-param-reassign`](http://eslint.org/docs/rules/no-param-reassign.html)
+
+> Why? Reassigning parameters can lead to unexpected behavior, especially when accessing the `arguments` object. It can also cause optimization issues, especially in V8.
+
+```javascript
+// bad
+function f1(a) {
+  a = 1
+}
+
+function f2(a) {
+  if (!a) { a = 1 }
+}
+
+// good
+function f3(a) {
+  const b = a || 1
+}
+
+function f4(a = 1) {
+}
+```
+
+Prefer the use of the spread operator `...` to call variadic functions. eslint: [`prefer-spread`](http://eslint.org/docs/rules/prefer-spread)
+
+> Why? It's cleaner, you don't need to supply a context, and you can not easily compose `new` with `apply`.
+
+```javascript
+// bad
+const x = [1, 2, 3, 4, 5]
+console.log.apply(console, x)
+
+// good
+const x = [1, 2, 3, 4, 5]
+console.log(...x)
+
+// bad
+new (Function.prototype.bind.apply(Date, [null, 2016, 08, 05]))
+
+// good
+new Date(...[2016, 08, 05])
+```
+**[⬆ back to top](#table-of-contents)**
+
+<a name="arrow-functions"></a>
+## Arrow Functions
+
+When you must use function expressions (as when passing an anonymous function), use arrow function notation. eslint: [`prefer-arrow-callback`](http://eslint.org/docs/rules/prefer-arrow-callback.html), [`arrow-spacing`](http://eslint.org/docs/rules/arrow-spacing.html) jscs: [`requireArrowFunctions`](http://jscs.info/rule/requireArrowFunctions)
+
+> Why? It creates a version of the function that executes in the context of `this`, which is usually what you want, and is a more concise syntax.
+
+> Why not? If you have a fairly complicated function, you might move that logic out into its own function declaration.
+
+```javascript
+// bad
+[1, 2, 3].map(function (x) {
+  const y = x + 1
+  return x * y
+})
+
+// good
+[1, 2, 3].map((x) => {
+  const y = x + 1
+  return x * y
+})
+```
+
+If the function body consists of a single expression, omit the braces and use the implicit return. Otherwise, keep the braces and use a `return` statement. eslint: [`arrow-parens`](http://eslint.org/docs/rules/arrow-parens.html), [`arrow-body-style`](http://eslint.org/docs/rules/arrow-body-style.html) jscs:  [`disallowParenthesesAroundArrowParam`](http://jscs.info/rule/disallowParenthesesAroundArrowParam), [`requireShorthandArrowFunctions`](http://jscs.info/rule/requireShorthandArrowFunctions)
+
+> Why? Syntactic sugar. It reads well when multiple functions are chained together.
+
+```javascript
+// bad
+[1, 2, 3].map(number => {
+  const nextNumber = number + 1
+  `A string containing the ${nextNumber}.`
+})
+
+// good
+[1, 2, 3].map(number => `A string containing the ${number}.`)
+
+// good
+[1, 2, 3].map((number) => {
+  const nextNumber = number + 1
+  return `A string containing the ${nextNumber}.`
+})
+
+// good
+[1, 2, 3].map((number, index) => ({
+  index: number
+}))
+```
+
+In case the expression spans over multiple lines, wrap it in parentheses for better readability.
+
+> Why? It shows clearly where the function starts and ends.
+
+```js
+// bad
+[1, 2, 3].map(number => 'As time went by, the string containing the ' +
+  `${number} became much longer. So we needed to break it over multiple ` +
+  'lines.'
+)
+
+// good
+[1, 2, 3].map(number => (
+  `As time went by, the string containing the ${number} became much ` +
+  'longer. So we needed to break it over multiple lines.'
+))
+```
+
+If your function takes a single argument and doesn’t use braces, omit the parentheses. Otherwise, always include parentheses around arguments. eslint: [`arrow-parens`](http://eslint.org/docs/rules/arrow-parens.html) jscs:  [`disallowParenthesesAroundArrowParam`](http://jscs.info/rule/disallowParenthesesAroundArrowParam)
+
+> Why? Less visual clutter.
+
+```js
+// bad
+[1, 2, 3].map((x) => x * x)
+
+// good
+[1, 2, 3].map(x => x * x)
+
+// good
+[1, 2, 3].map(number => (
+  `A long string with the ${number}. It’s so long that we’ve broken it ` +
+  'over multiple lines!'
+))
+
+// bad
+[1, 2, 3].map(x => {
+  const y = x + 1
+  return x * y
+})
+
+// good
+[1, 2, 3].map((x) => {
+  const y = x + 1
+  return x * y
+})
+```
+
+Avoid confusing arrow function syntax (`=>`) with comparison operators (`<=`, `>=`). eslint: [`no-confusing-arrow`](http://eslint.org/docs/rules/no-confusing-arrow)
+
+```js
+// bad
+const itemHeight = item => item.height > 256 ? item.largeSize : item.smallSize
+
+// bad
+const itemHeight = (item) => item.height > 256 ? item.largeSize : item.smallSize
+
+// good
+const itemHeight = item => (item.height > 256 ? item.largeSize : item.smallSize)
+
+// good
+const itemHeight = (item) => {
+  const { height, largeSize, smallSize } = item
+  return height > 256 ? largeSize : smallSize
+}
+```
+
+**[⬆ back to top](#table-of-contents)**
