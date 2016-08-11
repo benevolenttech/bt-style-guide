@@ -1,12 +1,13 @@
 <a name="table-of-contents"></a>
 
 1. [Semicolons](#semicolons)
-2. [Objects](#objects)
-3. [Arrays](#arrays)
-4. [Strings](#strings)
-5. [Functions](#functions)
-6. [Arrow Functions](#arrow-functions)
-7. [Classes](#classes)
+1. [Objects](#objects)
+1. [Arrays](#arrays)
+1. [Iteration](#iteration)
+1. [Strings](#strings)
+1. [Functions](#functions)
+1. [Arrow Functions](#arrow-functions)
+1. [Classes](#classes)
 
 
 <a name="semicolons"></a>
@@ -19,7 +20,7 @@ We don't use them
 // bad
 const foo = 'bar';
 
-// good 
+// good
 const foo = 'bar'
 ```
 
@@ -319,6 +320,27 @@ function processInput(input) {
 
 // the caller selects only the data they need
 const { left, top } = processInput(input)
+```
+**[⬆ back to top](#table-of-contents)**
+
+<a name="iteration"></a>
+## Iteration
+[Operation: Iteration Obliteration](https://sudo.isl.co/operation-iteration-obliteration/)
+
+Prefer [higher order functions](http://eloquentjavascript.net/05_higher_order.html) over loops
+> Why? It reads better than loops and encourages pure functional operations
+
+```javascript
+// bad
+let arr = ['beep', 'boop', 'bop']
+
+for (let i = 0; i < arr.length; i++) {
+  arr[i] = `${arr[i]}__`;
+}
+
+// good
+let arr = ['beep', 'boop', 'bop']
+let arr2 = arr.map(item => `${item}__`)
 ```
 **[⬆ back to top](#table-of-contents)**
 
@@ -711,4 +733,3 @@ const itemHeight = (item) => {
 In short, we don't typically utilize classes. We have embraced more of a [composition model](https://medium.com/javascript-scene/the-open-minded-explorer-s-guide-to-object-composition-88fe68961bed#.lla2ezbz2) of development. However, there are situations (particularly when using third-party code) when Classes my be required (or at least desirable). You should read [How to Use Classes and Sleep at Night](https://medium.com/@dan_abramov/how-to-use-classes-and-sleep-at-night-9af8de78ccb4#.dk2xxm2ys)
 
 **[⬆ back to top](#table-of-contents)**
-
