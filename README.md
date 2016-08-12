@@ -1,6 +1,7 @@
 <a name="table-of-contents"></a>
 
 1. [Semicolons](#semicolons)
+1. [Variables](#variables)
 1. [Objects](#objects)
 1. [Arrays](#arrays)
 1. [Iteration](#iteration)
@@ -22,6 +23,32 @@ const foo = 'bar';
 
 // good
 const foo = 'bar'
+```
+
+<a name="variables"></a>
+## Variables
+We embrace block scoping. By default, use `const`. If a variable needs to change, use `let`. **Never** use `var`.
+
+```javascript
+// bad
+var foo = 'bar'
+
+// good 
+const foo = 'bar'
+let beep
+// ... some time later
+beep = 'boop'
+```
+
+One variable declaration per line
+
+```javascript
+// bad
+let foo, bar
+
+// good
+let foo
+let bar
 ```
 
 <a name="objects"></a>
