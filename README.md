@@ -1,4 +1,4 @@
-# ISL Style Guide
+# Benevolent Tech Style Guide
 
 - [HTML](../../tree/html)
 - [CSS](http://cssguidelin.es/)
