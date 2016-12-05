@@ -1,4 +1,4 @@
-# ISL \<html\> Style Guide
+# BT \<html\> Style Guide
 
 Inspired by Nicolas Gallagher's [Idiomatic HTML](https://github.com/necolas/idiomatic-html).
 
@@ -169,7 +169,7 @@ An example of various conventions:
 
 ## License
 
-_ISL \<html\> Style Guide_ is licensed under the [Creative Commons Attribution
+_BT \<html\> Style Guide_ is licensed under the [Creative Commons Attribution
 3.0 Unported License](http://creativecommons.org/licenses/by/3.0/). This applies
 to all documents and translations in this repository.
 
