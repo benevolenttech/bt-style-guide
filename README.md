@@ -1,6 +1,6 @@
-# ISL <?php Style Guide
+# BT <?php Style Guide
 
-ISL follows the [PSR-2 Coding Style Guide](http://www.php-fig.org/psr/psr-2/)
+BT follows the [PSR-2 Coding Style Guide](http://www.php-fig.org/psr/psr-2/)
 with two exceptions:
 
 - Opening and closing braces for functions and classes are allow to be on the same line
